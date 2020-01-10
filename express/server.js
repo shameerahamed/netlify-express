@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
     encrypted: true
   });
   
-  console.log(pusher);
+  console.log('pusher ' + pusher);
   pusher.trigger('my-channel', 'my-event', {
     "message": "hello world"
   });
