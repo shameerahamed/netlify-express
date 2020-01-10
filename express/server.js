@@ -4,9 +4,21 @@ const path = require('path');
 const serverless = require('serverless-http');
 const app = express();
 const bodyParser = require('body-parser');
+const Pusher = require('pusher');
 
 const router = express.Router();
 router.get('/', (req, res) => {
+  var pusher = new Pusher({
+    appId: '930069',
+    key: 'f1862ffb211f8bb5d61a',
+    secret: '08fedd2326ee8a716cb9',
+    cluster: 'ap1',
+    encrypted: true
+  });
+
+  pusher.trigger('my-channel', 'my-event', {
+    "message": "hello world"
+  });
   res.writeHead(200, { 'Content-Type': 'text/html' });
   res.write('<h1>Hello from Express.js!</h1>');
   res.end();
