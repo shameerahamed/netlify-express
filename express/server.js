@@ -15,7 +15,8 @@ router.get('/', (req, res) => {
     cluster: 'ap1',
     encrypted: true
   });
-
+  
+  console.log(pusher);
   pusher.trigger('my-channel', 'my-event', {
     "message": "hello world"
   });
